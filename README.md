@@ -8,6 +8,13 @@ tar -xzvf ncurses-6.1.tar.gz  # 解压
 cd ncurses-6.1
 ./configure --prefix="绝对路径(我安装在了 ncurses/ 下)" --with-shared --without-debug --enable-widec  # 指定路径configure
 make && make install  # 安装
+
+export CXXFLAGS="-fPIC"
+export CFLAGS="-fPIC"
+export NCURSES_HOME=$HOME/ncurses  # 你自己的 ncurses 目录
+export PATH=$NCURSES_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$NCURSES_HOME/lib:$LD_LIBRARY_PATH
+export CPPFLAGS="-I$NCURSES_HOME/include" LDFLAGS="-L$NCURSES_HOME/lib"
 ```
 
 ## 安装zsh
